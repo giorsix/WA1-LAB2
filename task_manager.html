@@ -1,66 +1,137 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 
     <title>Task Manager</title>
-  </head>
+
+    <!-- Custom CSS for this document -->
+    <link href="custom.css" rel="stylesheet">
+</head>
+
 <body>
 
+    <!-- Navbar-->
     <!-- https://getbootstrap.com/docs/4.6/components/navbar/-->
-    <!-- navbar-expand-lg : responsive collapsing class, stacks the navbar vertically on large screens) -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- navbar-expand-lg : automatically collapses at the lg (large) breakpoint. -->
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light"> -->
 
-        <!-- .navbar-brand sub-component for project name-->
-        <a class="navbar-brand" href="#">ToDo Manager</a>
-        <!-- Clicking an anchor with href="#" will move the scroll position to the top.-->
-    
+    <nav class="navbar navbar-dark navbar-expand-sm bg-primary fixed-top">
+
+        <!-- Toggle the left sidebar -->
         <!-- .navbar-toggler sub-component for use with the collapse plugin and other navigation toggling behaviors.-->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#left-sidebar"
+            aria-controls="left-sidebar" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-    
-        <!-- Wrap the navbar content inside a div element with class="collapse navbar-collapse", 
-            followed by an id that matches the data-target of the button -->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <!-- <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li> -->
-                <li class="nav-item">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </li>
-                <li class="nav-item">
-                </li>
-            </ul>
+
+        <!-- .navbar-brand sub-component for project name-->
+        <!-- Clicking an anchor with href="#" will move the scroll position to the top.-->
+        <a class="navbar-brand" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-check-all"
+                viewBox="0 0 16 16">
+                <path
+                    d="M8.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L2.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093L8.95 4.992a.252.252 0 0 1 .02-.022zm-.92 5.14.92.92a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 1 0-1.091-1.028L9.477 9.417l-.485-.486-.943 1.179z" />
+            </svg>
+            ToDo Manager
+        </a>
+
+        <!-- Search form -->
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <!--  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+        </form>
+
+        <!-- Link to the user profile-->
+        <!-- .navbar-nav sub-component for a full-height and lightweight navigation -->
+        <div class="navbar-nav ml-md-auto">
+            <a class="nav-item nav-link" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                    class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                    <path fill-rule="evenodd"
+                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                </svg>
+            </a>
         </div>
-    
+
     </nav>
 
-    <div class='container'>
+    <!-- Content of the page -->
+    <!-- .container has one fixed width for each screen size in bootstrap (xs,sm,md,lg); 
+         .container-fluid expands to fill the available width. -->
+    <div class='container-fluid'>
         <div class='row'>
-
-            <aside class="col-md-3">
-                <ul class="list-group">
-                    <li class="list-group-item active">All</li>
-                    <li class="list-group-item">Important</li>
-                    <li class="list-group-item">Today</li>
-                    <li class="list-group-item">Next 7 Days</li>
-                    <li class="list-group-item">Private</li>
-                  </ul>
+            <!-- Left sidebar -->
+            <!-- use an id that matches the data-target of the toggler button -->
+            <aside class="collapse d-sm-block col-sm-4 col-12 bg-light below-nav" id="left-sidebar">
+                <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item list-group-item-action active">All</a>
+                    <a href="#" class="list-group-item list-group-item-action">Important</a>
+                    <a href="#" class="list-group-item list-group-item-action">Today</a>
+                    <a href="#" class="list-group-item list-group-item-action">Next 7 Days</a>
+                    <a href="#" class="list-group-item list-group-item-action">Private</a>
+                </div>
             </aside>
-            <div class='col-md-9'>
 
-            </div>
+            <!-- Main content-->
+            <main class="col-sm-8 col-12 below-nav">
+                <h1>All</h1>
+
+                <!-- List of tasks -->
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="check-t1">
+                                <label class="custom-control-label" for="check-t1">Complete Lab 2</label>
+                            </div>
+                            <small>Monday 22 March 2021 at 14:30</small>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="check-t2">
+                                <label class="custom-control-label" for="check-t2">Buy some groceries</label>
+                            </div>
+                            <svg class="bi bi-person-square" width="1.2em" height="1.2em" viewBox="0 0 16 16"
+                                fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M14 1H2a1 1 0 00-1 1v12a1 1 0 001 1h12a1 1 0 001-1V2a1 1 0 00-1-1zM2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z"
+                                    clip-rule="evenodd" />
+                                <path fill-rule="evenodd"
+                                    d="M2 15v-1c0-1 1-4 6-4s6 3 6 4v1H2zm6-6a3 3 0 100-6 3 3 0 000 6z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                            <small>Today at 14:00</small>
+                        </div>
+                    </li>
+
+                    <li class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="check-t3">
+                            <label class="custom-control-label important" for="check-t3">Read a good book!</label>
+                          </div>
+                        </div>
+                      </li>
+                </ul>
+
+                <!-- Add a new task-->
+                <button type="button" class="btn btn-lg btn-primary fixed-right-bottom">&#43;</button>
+
+            </main>
+
         </div>
     </div>
 
@@ -81,4 +152,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
     -->
 </body>
+
 </html>

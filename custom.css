@@ -1,0 +1,8 @@
+/*
+Fixed navbars use position: fixed, meaning they’re pulled from the normal flow of the DOM and 
+may require custom CSS (e.g., padding-top on the ) to prevent overlap with other elements.
+*/
+
+.below-nav {
+    padding-top: 5rem;
+}
